@@ -1,0 +1,7 @@
+.navbar-nav.ml-auto > .nav-item {
+    margin-left: auto;
+  }
+  .cursor{
+    text-decoration: none;
+    color: black;
+  }

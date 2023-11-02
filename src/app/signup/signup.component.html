@@ -1,0 +1,21 @@
+<form *ngIf="signupform" [formGroup]="signupform" class="form-signup shadow p-5 mt-5" (submit)="onSubmit()" style="margin-bottom: 100px;">
+    <h1 class="text-center text-muted mb-5">Sign Up</h1>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" formControlName="name" placeholder="Enter your name" class="form-control" />
+      <small *ngIf="signupform.get('name')?.invalid && signupform.get('name')?.touched" class="text-danger">Please enter a valid name.</small>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" placeholder="Enter your email" class="form-control" />
+      <small *ngIf="signupform.get('email')?.invalid && signupform.get('email')?.touched" class="text-danger">Please enter a valid email.</small>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" formControlName="password" placeholder="Enter your password" class="form-control" />
+      <small *ngIf="signupform.get('password')?.invalid && signupform.get('password')?.touched" class="text-danger">Password must be at least 8 characters long.</small>
+    </div>
+    <button type="submit" [disabled]="signupform.invalid" class="btn btn-primary w-100">Submit</button>
+
+    <div class="text-center mt-3"><a routerLink="/login" class="d-block mx-auto">Have an account?<span style="text-decoration: underline;color: brown;"> click here to Login</span></a></div>
+  </form>

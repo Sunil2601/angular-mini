@@ -1,0 +1,87 @@
+<mat-progress-bar *ngIf="!getApiReqStatus()" mode="indeterminate"></mat-progress-bar>
+<div *ngIf="getApiReqStatus()" class="container">
+    <div *ngFor="let artData of getArtDataById()">
+        <div class="image-parent mt-5">
+            <img [src]="getImageURL()" onerror="this.onerror=null; this.src='../../assets/images/error.jpg';"
+                class="img-fluid rounded-start card-image" alt="">
+        </div>
+        <div class="art-title">{{artData?.title}}</div>
+        <div class="art-artsist-details text-muted">
+            {{artData?.artist_title}},{{artData?.date_start}}-{{artData?.date_end}}
+        </div>
+
+        <div class="mt-5">
+            <div class="row border-bottom m-2">
+                <div class="col-4 title">Artist</div>
+                <div class="col-8 description">{{artData?.artist_title}}</div>
+            </div>
+            <div class="row border-bottom m-2">
+                <div class="col-4 title">Title</div>
+                <div class="col-8 description">{{artData?.title}}</div>
+            </div>
+            <div class="row border-bottom m-2">
+                <div class="col-4 title">Place</div>
+                <div class="col-8 description">{{artData?.place_of_origin}}</div>
+            </div>
+            <div class="row border-bottom m-2">
+                <div class="col-4 title">Date</div>
+                <div class="col-8 description">{{artData?.date_display }}</div>
+            </div>
+            <div class="row border-bottom m-2">
+                <div class="col-4 title">Medium</div>
+                <div class="col-8 description">{{artData?.medium_display }}</div>
+            </div>
+            <div class="row border-bottom m-2">
+                <div class="col-4 title">Dimensions</div>
+                <div class="col-8 description">{{artData?.dimensions }}</div>
+            </div>
+            <div class="row border-bottom m-2">
+                <div class="col-4 title">Credit Line</div>
+                <div class="col-8 description">{{artData?.credit_line }}</div>
+            </div>
+            <div class="row border-bottom m-2">
+                <div class="col-4 title">Reference Number</div>
+                <div class="col-8 description">{{artData?.main_reference_number }}</div>
+            </div>
+            <div class="row border-bottom m-2">
+                <div class="col-4 title">IIIF Manifest</div>
+                <div class="col-8 description"><a [href]="artData?.api_link">{{artData?.api_link }}</a></div>
+            </div>
+        </div>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="mt-5">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Publication History
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="art-history">{{artData?. publication_history}}</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Exhibition History
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="art-history">{{artData?. exhibition_history}}</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Publication History
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="art-history">{{artData?. publication_history}}</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Provenance  Text
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p class="art-history">{{artData?. provenance_text}}</p>
+        </mat-expansion-panel>
+
+
+
+    </div>
+</div>

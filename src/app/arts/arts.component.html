@@ -1,0 +1,30 @@
+<mat-progress-bar *ngIf="!getApiReqStatus()" mode="indeterminate"></mat-progress-bar>
+<div *ngIf="getApiReqStatus()">
+    <div class="row row-cols-lg-4 row-cols-sm-2 row-cols-md-3 justify-content-center border-top">
+        <div *ngFor="let i of [1,2,3,4]">
+            <div class="col  d-flex flex-column align-items-between border-end">
+                <div *ngFor="let art of getArtsData(i);index as idx">
+                    <div class="art-card border-bottom border-start">
+                        <img [src]="getIamgeURL(art)" alt="" class="art-image d-block mx-auto"
+                        onerror="this.onerror=null; this.src='../../assets/images/error.jpg';">
+                        <div class="art-title">{{art.title}},{{art.date_start}}</div>
+                        <div class="art-artist">{{art.artist_title}}</div>
+                        <div class="row justify-content-between mt-5 mb-0">
+                            <button class="btn col-2" (click)="onView(art.id)"><i class="fa-solid fa-eye fa-xl"
+                                    tooltip="Show full details"></i></button>
+                            <button class="btn  col-2" (click)="onAddToFavourites(art)">
+                                <i class="fa-solid fa-heart fa-xl" *ngIf="isAFavourite(art)" tooltip="Remove Favourite"></i>
+                                <i class="fa-regular fa-heart fa-xl" *ngIf="!isAFavourite(art)" tooltip="Add Favourite"></i>
+                            </button>
+                            <button class="btn col-2" (click)="onShare(art.id)"><i
+                                    class="fa-solid fa-arrow-up-from-bracket fa-xl" tooltip="Share"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<mat-paginator [length]="123300" [pageSize]="20" [pageSizeOptions]="[ 20, 40,100]" aria-label="Select page"
+    (page)="onChange($event)">
+</mat-paginator>

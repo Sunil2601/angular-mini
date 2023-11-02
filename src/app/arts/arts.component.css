@@ -1,0 +1,53 @@
+.art-card {
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.art-image {
+  width: 100%;
+  height: 400px;
+  object-fit: contain;
+}
+.art-image:hover{
+  opacity: 0.8;
+}
+i:hover{
+  transform: scale(1.2);
+}
+
+.art-title {
+  font-family: 'EB Garamond', serif;
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-weight: 200;
+}
+
+
+/* .card-image {
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.scaled-image {
+    transition: transform 0.3s ease-in-out;
+    transform: scale(1.2);
+}
+.card {
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+  .card-image-container {
+    overflow: hidden;
+  }
+  .card-image-container img {
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  
+  .card.scaled-card .card-image-container img {
+    transform: scale(1.5);
+  } */

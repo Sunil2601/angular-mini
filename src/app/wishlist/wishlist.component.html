@@ -1,0 +1,48 @@
+<div *ngIf="!isLoggedIn"><h1 class="text-center mt-5 text-muted" style="margin-bottom: 300px;">Login to Add/Remove Favourites</h1></div>
+<div *ngIf="isLoggedIn">
+    <div *ngIf="getFavouritesData().length==0" style="margin-bottom: 200px;">
+        <h1 class="text-center mt-5 text-secondary">You have not added any Favourites yet </h1>
+        <button class="btn btn-warning d-block mx-auto mt-5 w-50" (click)="onClick()">Explore arts</button>
+    </div>
+    <div *ngIf="getFavouritesData().length>0">
+        <div>
+            <div class="row justify-content-center">
+                <div *ngFor="let art of getFavouritesData()" class="col-lg-8 col-md-12 col-sm-12 p-3">
+                    <div class="card shadow">
+                        <div class="row g-0">
+                            <div class="col-md-6">
+                                <img [src]="getIamgeURL(art)"
+                                    onerror="this.onerror=null; this.src='../../assets/images/error.jpg';"
+                                    class="img-fluid rounded-start card-image" alt="...">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{art.title}}</h5>
+                                    <p class="card-text">{{art.artwork_type_title}}</p>
+                                    <p class="card-text"><small class="text-muted">{{art.artist_title}}</small></p>
+                                    <p class="card-text"><small
+                                            class="text-muted">{{art.publication_history|slice:0:200}}...</small></p>
+                                    <div class="row justify-content-center mb-0">
+                                        <button class="btn col-2" (click)="onView(art.id)"><i
+                                                class="fa-solid fa-eye fa-xl" tooltip="Show full details"></i></button>
+                                        <button class="btn  col-2" (click)="onRemoveFromFavourites(art)">
+                                            <i class="fa-solid fa-heart fa-xl" *ngIf="isAFavourite(art)"
+                                                tooltip="Remove From Favourites"></i>
+                                            <i class="fa-regular fa-heart fa-xl" *ngIf="!isAFavourite(art)"></i>
+                                        </button>
+                                        <button class="btn col-2" (click)="onShare(art.id)"><i
+                                                class="fa-solid fa-arrow-up-from-bracket fa-xl"
+                                                tooltip="Share"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <mat-paginator [length]="getLength()" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
+            aria-label="Select page" (page)="onChange($event)">
+        </mat-paginator>
+    </div>
+</div>
